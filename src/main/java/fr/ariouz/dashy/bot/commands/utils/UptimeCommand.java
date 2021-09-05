@@ -23,7 +23,7 @@ public class UptimeCommand extends DashyCommand {
     public void execute(GuildMessageReceivedEvent event, String[] args){
         RuntimeMXBean runtimeMXBean = ManagementFactory.getRuntimeMXBean();
         EmbedBuilder embedBuilder = getDashyStarter().getBotManager().getMessageManager().getDashyEmbed().generate(DashyEmbedType.INFO, "Bot Uptime")
-                .setDescription("Hey you ! :wave: I'm online since " + new TimeConverter().from(TimeUtil.MILLIS, getDashyStarter().getStartTime()).parse(TimeFormat.YEAR) + " (xx:xx:xx:xx days).");
+                .setDescription("Hey you ! :wave: I'm online since " + new TimeConverter().from(TimeUtil.MILLIS, getDashyStarter().getStartTime()).parse(TimeFormat.YEAR) + " (*time* days).");
         event.getChannel().sendMessageEmbeds(embedBuilder.build()).queue();
     }
 
