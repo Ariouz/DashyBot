@@ -7,7 +7,7 @@ import java.util.Arrays;
 
 public enum Commands {
 
-    UPTIME("uptime", "Get bot uptime", Permission.MANAGE_CHANNEL, CommandCategories.UTILITIES, UptimeCommand.class),
+    UPTIME("uptime", "Get bot uptime", Permission.MESSAGE_READ, CommandCategories.UTILITIES, UptimeCommand.class),
 
     ;
 
@@ -15,9 +15,9 @@ public enum Commands {
     private final String description;
     private final Permission permission;
     private final CommandCategories commandCategory;
-    private final Class commandClass;
+    private final Class<?> commandClass;
 
-    Commands(String identifier, String description, Permission permission, CommandCategories category, Class commandClass){
+    Commands(String identifier, String description, Permission permission, CommandCategories category, Class<?> commandClass){
         this.identifier = identifier;
         this.description = description;
         this.permission = permission;
@@ -41,7 +41,7 @@ public enum Commands {
         return commandCategory;
     }
 
-    public Class getCommandClass() {
+    public Class<?> getCommandClass() {
         return commandClass;
     }
 

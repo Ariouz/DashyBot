@@ -30,7 +30,7 @@ public class DashyStarter {
         this.startTime = System.currentTimeMillis();
         Calendar calendar = Calendar.getInstance();
         Date date = calendar.getTime();
-        String dateTimeString = new TimeConverter().fromDate(date).parse(TimeFormat.YEAR);
+        String dateTimeString = new TimeConverter().fromDate(date).parse(TimeFormat.YEAR_FILE);
         this.dashyLogger = new DashyLogger("logs", "logs/"+dateTimeString+"-logs.txt");
         startBot(args);
         loadPresence();

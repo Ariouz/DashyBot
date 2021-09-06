@@ -2,7 +2,7 @@ package fr.ariouz.dashy.bot.time;
 
 public enum TimeUtil {
 
-    MILLIS(1, 0),
+    MILLIS(1,0),
     SECOND(1000, 1),
     MINUTE(60, 2),
     HOUR(60, 3),
@@ -12,16 +12,16 @@ public enum TimeUtil {
 
     ;
 
-    private final long millis;
+    private final long time;
     private final int power;
 
-    TimeUtil(long millis, int power){
-        this.millis = millis;
+    TimeUtil(long time, int power){
+        this.time = time;
         this.power = power;
     }
 
-    public long getMillis() {
-        return millis;
+    public long getTime() {
+        return time;
     }
 
     public int getPower() {

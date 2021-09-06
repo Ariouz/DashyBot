@@ -10,9 +10,6 @@ import fr.ariouz.dashy.bot.time.TimeUtil;
 import net.dv8tion.jda.api.EmbedBuilder;
 import net.dv8tion.jda.api.events.message.guild.GuildMessageReceivedEvent;
 
-import java.lang.management.ManagementFactory;
-import java.lang.management.RuntimeMXBean;
-
 public class UptimeCommand extends DashyCommand {
 
     public UptimeCommand(Commands command, DashyStarter dashyStarter) {
@@ -21,9 +18,11 @@ public class UptimeCommand extends DashyCommand {
 
     @Override
     public void execute(GuildMessageReceivedEvent event, String[] args){
-        RuntimeMXBean runtimeMXBean = ManagementFactory.getRuntimeMXBean();
+        long uptime = System.currentTimeMillis() - getDashyStarter().getStartTime();
+
         EmbedBuilder embedBuilder = getDashyStarter().getBotManager().getMessageManager().getDashyEmbed().generate(DashyEmbedType.INFO, "Bot Uptime")
-                .setDescription("Hey you ! :wave: I'm online since " + new TimeConverter().from(TimeUtil.MILLIS, getDashyStarter().getStartTime()).parse(TimeFormat.YEAR) + " (*time* days).");
+                .setDescription("Hey "+event.getAuthor().getAsMention()+" ! :wave: I'm online since " + new TimeConverter().from(TimeUtil.MILLIS, getDashyStarter().getStartTime()).parse(TimeFormat.YEAR) +
+                        " ("+ new TimeConverter().from(TimeUtil.MILLIS, uptime).parseToStringDays(":") +").");
         event.getChannel().sendMessageEmbeds(embedBuilder.build()).queue();
     }
 
